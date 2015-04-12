@@ -47,9 +47,7 @@ function onDeviceReady()
 
 app.initialize(function()
 {
-  $("a.search").on("vclick", search);
-  
-  $("a.config").on("vclick", config);
+  $("a.login").on("vclick", login);
 
   $(document).on("vclick", "a.login", function()
   {
@@ -60,14 +58,8 @@ app.initialize(function()
   });
 });
 
-function search()
+function login()
 {
   window.location.assign("search.html");
-  return false;
-}
-
-function config()
-{
-  window.location.assign("config.html");
   return false;
 }

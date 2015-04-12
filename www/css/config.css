@@ -24,7 +24,7 @@ body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-    background:url(../img/bg.jpg);
+    background:url(../img/bg2.jpg);
     background-size:cover;
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
     font-size:12px;
@@ -33,6 +33,10 @@ body {
     padding:0px;
     text-transform:uppercase;
     width:100%;
+}
+
+label {
+    color:#4285f4;
 }
 
 /* Portrait layout (default) */
