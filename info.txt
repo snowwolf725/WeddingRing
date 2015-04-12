@@ -1,0 +1,28 @@
+Node version: v0.12.2
+
+Cordova version: 4.3.0
+
+Config.xml file: 
+
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.lovee.remotePair" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>WeddingRing</name>
+    <description>
+        A sample Apache Cordova application that responds to the deviceready event.
+    </description>
+    <author email="dev@cordova.apache.org" href="http://cordova.io">
+        Apache Cordova Team
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+</widget>
+
+
+Plugins: 
+
+com.randdusing.bluetoothle,org.apache.cordova.console,org.apache.cordova.device
+
+Error retrieving Android platform information: Error: android: Command failed with exit code ENOENT
+
+Error retrieving iOS platform information: Error: xcodebuild: Command failed with exit code ENOENT
+
