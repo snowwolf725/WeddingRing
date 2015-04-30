@@ -263,15 +263,13 @@ function initialize()
   var paramsObj = {request:true};
 
   console.log("Initialize : " + JSON.stringify(paramsObj));
-
   bluetoothle.initialize(initializeSuccess, initializeError, paramsObj);
-
   return false;
 }
 
 function initializeSuccess(obj)
 {
-  console.log("Initialize Success : " + JSON.stringify(obj));
+  alert("11Initialize Success : " + JSON.stringify(obj));
 
   if (obj.status == "enabled")
   {
@@ -285,7 +283,7 @@ function initializeSuccess(obj)
 
 function initializeError(obj)
 {
-  console.log("Initialize Error : " + JSON.stringify(obj));
+  alert("Initialize Error : " + JSON.stringify(obj));
 }
 
 function enable()
@@ -511,7 +509,7 @@ function connect(address)
   var paramsObj = {address:address};
 
    console.log("Connect : " + JSON.stringify(paramsObj));
-
+  alert("Connect : " + JSON.stringify(paramsObj));
   bluetoothle.connect(connectSuccess, connectError, paramsObj);
 
   return false;
@@ -519,7 +517,7 @@ function connect(address)
 
 function connectSuccess(obj)
 {
-  console.log("Connect Success : " + JSON.stringify(obj));
+  alert("Connect Success : " + JSON.stringify(obj));
 
   if (obj.status == "connected")
   {
@@ -537,7 +535,7 @@ function connectSuccess(obj)
 
 function connectError(obj)
 {
-  console.log("Connect Error : " + JSON.stringify(obj));
+  alert("Connect Error : " + JSON.stringify(obj));
 }
 
 function reconnect(address)
@@ -892,7 +890,7 @@ function read(address, serviceUuid, characteristicUuid)
 {
   var paramsObj = {address:address, serviceUuid:serviceUuid, characteristicUuid:characteristicUuid};
 
-  console.log("Read : " + JSON.stringify(paramsObj));
+  alert("Read : " + JSON.stringify(paramsObj));
 
   bluetoothle.read(readSuccess, readError, paramsObj);
 
@@ -901,7 +899,7 @@ function read(address, serviceUuid, characteristicUuid)
 
 function readSuccess(obj)
 {
-  console.log("Read Success : " + JSON.stringify(obj));
+  alert("Read Success : " + JSON.stringify(obj));
 
   if (obj.status == "read")
   {
@@ -913,13 +911,13 @@ function readSuccess(obj)
   }
   else
   {
-    console.log("Unexpected Read Status");
+    alert("Unexpected Read Status");
   }
 }
 
 function readError(obj)
 {
-  console.log("Read Error : " + JSON.stringify(obj));
+  alert("Read Error : " + JSON.stringify(obj));
 }
 
 function subscribe(address, serviceUuid, characteristicUuid)

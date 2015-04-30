@@ -28,8 +28,11 @@ void at(char* cmd) {
 
 void loop() // run over and over
 {
-  if (Serial1.available())
-    Serial.write(Serial1.read());
+  if (Serial1.available()) {
+    //Serial.write(Serial1.read());
+    String data = Serial1.readStringUntil('\n');
+    Serial.println(data);
+  }
   if (Serial.available())
     Serial1.write(Serial.read());   
 }
