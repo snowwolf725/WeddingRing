@@ -3,7 +3,7 @@ android:
 components:
 - platform-tools
 - tools
-- build-tools-22.0.0
+- build-tools
 - android-22
 env:
 global:
