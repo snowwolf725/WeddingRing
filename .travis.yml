@@ -3,8 +3,8 @@ android:
 components:
 - platform-tools
 - tools
-- build-tools-19.0.0
-- android-19
+- build-tools-22.0.0
+- android-22
 env:
 global:
 before_install:
