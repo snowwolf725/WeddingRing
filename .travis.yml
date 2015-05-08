@@ -1,14 +1,16 @@
 language: android
 android:
 components:
-- platform-tools
 - tools
-- build-tools
+- platform-tools
+- build-tools-24.0.2
+- build-tools-22.0.1
 - android-22
 env:
 global:
 before_install:
 - echo "Before install stage"
+- android list sdk --no-ui --all --extended
 install:
 - echo "Install stage"
 - sudo apt-get install -y python-software-properties
