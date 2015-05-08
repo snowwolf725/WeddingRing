@@ -81,14 +81,16 @@ function next()
   var deviceAddr = $('#device :selected').val();
   var paramsObj = {address:deviceAddr};
   bluetoothle.connect(connectSuccess, connectError, paramsObj);
-  sleep(2000);
-  //discover(deviceAddr);
+  sleep(1000);
+  discover(deviceAddr);
   services(deviceAddr);
-  sleep(2000);
+  sleep(1000);
+  characteristics(deviceAddr, "ffe0");
+  sleep(1000);
   write(deviceAddr, "ffe0", "ffe1", btoa("MYNAME:" + myName + "   \n"));
-  sleep(2000);
+  sleep(1000);
   write(deviceAddr, "ffe0", "ffe1", btoa("MYATTR:" + myAttr + "   \n"));
-  sleep(2000);
+  sleep(1000);
   localStorage.setItem("deviceAddr", deviceAddr);
   window.location.assign("config2.html");
   return false;
@@ -397,6 +399,43 @@ function readDescriptor(address, serviceUuid, characteristicUuid, descriptorUuid
   bluetoothle.readDescriptor(readDescriptorSuccess, readDescriptorError, paramsObj);
 
   return false;
+}
+
+function characteristics(address, serviceUuid)
+{
+  var paramsObj = {address:address, serviceUuid:serviceUuid, characteristicUuids:[]};
+
+  console.log("Characteristics : " + JSON.stringify(paramsObj));
+
+  bluetoothle.characteristics(characteristicsSuccess, characteristicsError, paramsObj);
+
+  return false;
+}
+
+function characteristicsSuccess(obj)
+{
+  console.log("Characteristics Success : " + JSON.stringify(obj));
+
+  if (obj.status == "characteristics")
+  {
+    console.log("Characteristics");
+
+    var characteristics = obj.characteristics;
+
+    for (var i = 0; i < characteristics.length; i++)
+    {
+      addCharacteristic(obj.address, obj.serviceUuid, characteristics[i].characteristicUuid);
+    }
+  }
+  else
+  {
+    console.log("Unexpected Characteristics Status");
+  }
+}
+
+function characteristicsError(obj)
+{
+  console.log("Characteristics Error : " + JSON.stringify(obj));
 }
 
 function addDevice(address, name)
