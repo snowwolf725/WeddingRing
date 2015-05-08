@@ -82,7 +82,8 @@ function next()
   var paramsObj = {address:deviceAddr};
   bluetoothle.connect(connectSuccess, connectError, paramsObj);
   sleep(2000);
-  discover(deviceAddr);
+  //discover(deviceAddr);
+  services(deviceAddr);
   sleep(2000);
   write(deviceAddr, "ffe0", "ffe1", btoa("MYNAME:" + myName + "   \n"));
   sleep(2000);
@@ -294,6 +295,54 @@ function readSuccess(obj)
 function readError(obj)
 {
   alert("Read Error : " + JSON.stringify(obj));
+}
+
+function services(address)
+{
+  var paramsObj = {address:address, serviceUuids:[]};
+
+  console.log("Services : " + JSON.stringify(paramsObj));
+
+  bluetoothle.services(servicesSuccess, servicesError, paramsObj);
+
+  return false;
+}
+
+function servicesSuccess(obj)
+{
+  console.log("Services Success : " + JSON.stringify(obj));
+
+  if (obj.status == "services")
+  {
+    console.log("Services");
+
+    var serviceUuids = obj.serviceUuids;
+
+    for (var i = 0; i < serviceUuids.length; i++)
+    {
+      addService(obj.address, serviceUuids[i]);
+    }
+  }
+  else
+  {
+    console.log("Unexpected Services Status");
+  }
+}
+
+function servicesError(obj)
+{
+  console.log("Services Error : " + JSON.stringify(obj));
+}
+
+function rssi(address)
+{
+  var paramsObj = {address:address};
+
+  console.log("RSSI : " + JSON.stringify(paramsObj));
+
+  bluetoothle.rssi(rssiSuccess, rssiError, paramsObj);
+
+  return false;
 }
 
 function subscribe(address, serviceUuid, characteristicUuid)
