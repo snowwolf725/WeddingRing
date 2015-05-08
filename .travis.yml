@@ -23,7 +23,7 @@ before_script:
 script:
 - echo "Script stage"
 - cordova platform remove android
-- cordova platform add android
+- cordova platform add android@3.7.1
 - cordova build android
 after_success:
 after_failure:
